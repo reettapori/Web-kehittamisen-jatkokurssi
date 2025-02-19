@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SinglePageWebsite_tehtävä_1</title>
+    <link rel="stylesheet" href="css-tyyli.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="#home">Aloitusnäkymä</a></li>
+                <li><a href="#about">Tietoja</a></li>
+                <li><a href="#contact">Yhteydenotto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<main>
+    <section id="home" class="section">
+        <h1>Tervetuloa Reetan SinglePageWebsite aloitusnäkymään!</h1>
+        <p> Tässä tehtävässä kertaan web-kehittämisen perusteet -kurssin sisältöä HTML:stä, CSS:stä ja JavaScriptistä.</p>
+    </section>
+
+    <section id="about">
+        <h2>Tietoja tästä websivusta:</h2>
+        <p>Olen tehnyt tällaisen samanlaisen websivun kahdella eri tavalla. Tämä versio on tehty niin, että HTML, CSS ja JavaScript ovat erillisissä tiedostoissa.</p>
+        <p>Olen käyttänyt tekoälyä apuna aiheen kertaamisessa ja tämän sivun luomisessa.</p>
+        <p>Sivun validointi:</p>
+        <p>Olen käyttänyt seuraavia työkaluja sivun validointiin:</p>
+        <p>HTML-validointiin W3C HTML Validator</p>
+        <p>CSS-validointiin W3C CSS Validator.</p>
+        <p>Validointityökalujen avulla korjasin muutamia syntaksivirheitä.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Yhteydenotto</h2>
+        <p>Voitte ottaa yhteyttä täyttämällä seuraavat kentät:</p>
+        <form id="contact-form">
+            <label for="name">Nimesi:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="message">Viestisi:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Lähetä viesti</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Reetan SinglePageWebsite</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

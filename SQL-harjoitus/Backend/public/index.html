@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Käyttäjät</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: white;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            background-color: #dc3545;
+            color: white;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        #errorMessage {
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Käyttäjähallinta</h1>
+    <p id="errorMessage"></p> <!-- Tämä näyttää virheilmoitukset -->
+
+    <form id="userForm">
+        <input type="text" id="nimimerkki" placeholder="Nimimerkki" required>
+        <input type="email" id="email" placeholder="Sähköposti" required>
+        <input type="number" id="ika" placeholder="Ikä">
+        <input type="text" id="kaupunki" placeholder="Kaupunki">
+        <input type="date" id="paiva" placeholder="Päivämäärä">
+        <button type="submit">Tallenna</button>
+    </form>
+    
+    <h2>Käyttäjälista</h2>
+    <ul id="userList"></ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("userForm");
+            const userList = document.getElementById("userList");
+            const nimimerkkiInput = document.getElementById("nimimerkki");
+            const emailInput = document.getElementById("email");
+            const ikaInput = document.getElementById("ika");
+            const kaupunkiInput = document.getElementById("kaupunki");
+            const paivaInput = document.getElementById("paiva");
+            const errorMessage = document.getElementById("errorMessage");
+
+            // Hakee käyttäjät palvelimelta
+            function fetchUsers() {
+                fetch("/users")
+                    .then(response => response.json())
+                    .then(users => {
+                        userList.innerHTML = "";
+                        users.forEach(user => {
+                            const li = document.createElement("li");
+                            li.innerHTML = `${user.nimimerkki} (${user.email}) - ${user.ika} vuotta, ${user.kaupunki}, ${user.paiva}<br>
+                                <button class="delete-btn" onclick="deleteUser(${user.id})">Poista</button>`;
+                            userList.appendChild(li);
+                        });
+                    });
+            }
+
+            // Lomakkeen lähetys (Uuden käyttäjän lisääminen)
+            form.addEventListener("submit", event => {
+                event.preventDefault();
+                const user = {
+                    nimimerkki: nimimerkkiInput.value,
+                    email: emailInput.value,
+                    ika: ikaInput.value ? parseInt(ikaInput.value, 10) : null,
+                    kaupunki: kaupunkiInput.value,
+                    paiva: paivaInput.value
+                };
+
+                // Lähetetään POST-pyyntö käyttäjän lisäämiseksi
+                fetch("/users", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(user)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        // Virheilmoitus, jos nimimerkki on jo käytössä
+                        errorMessage.textContent = data.error;  // Virheviesti tulee näkyviin
+                    } else {
+                        errorMessage.textContent = ''; // Tyhjennetään virheilmoitus
+                        form.reset();  // Tyhjennetään lomake
+                        fetchUsers();  // Haetaan ja päivitetään käyttäjälista
+                    }
+                })
+                .catch(error => {
+                    // Yleinen virhe, jos POST-pyyntö epäonnistuu
+                    errorMessage.textContent = 'Virhe tietojen tallennuksessa.';
+                });
+            });
+
+            // Käyttäjän poistaminen
+            window.deleteUser = (id) => {
+                fetch(`/users/${id}`, { method: "DELETE" })
+                    .then(() => fetchUsers());
+            };
+
+            // Alustetaan käyttäjät ja haetaan ne tietokannasta
+            fetchUsers();
+        });
+    </script>
+</body>
+</html>

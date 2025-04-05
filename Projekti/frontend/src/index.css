@@ -1,0 +1,122 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Keskittää sisällön pystysuunnassa */
+  align-items: stretch; /* Korjattu: täyttää koko leveys */
+  width: 100%; /* Täyttää selainikkunan leveys */
+  min-height: 100vh; /* Varmistaa korkeuden täyttymisen */
+  padding: 1rem;
+  box-sizing: border-box;
+  margin-top: 80px; /* Jätä tilaa yläpalkille */
+  
+}
+
+header {
+  position: fixed; /* Kiinnittää yläpalkin yläreunaan */
+  top: 0; /* Asettaa palkin aivan ylös */
+  left: 0; /* Asettaa palkin vasemmalle */
+  width: 100%; /* Varmistaa, että palkki täyttää koko leveyden */
+  z-index: 1000; /* Nostaa palkin muiden elementtien päälle */
+  display: flex;
+  align-items: center;
+  height: 120px; /* Yläpalkin korkeus */
+  padding: 0 1rem;
+  background-color: #0077B6; /* Yläpalkin taustaväri */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Lisää kevyt varjo */
+}
+
+h1.header-text {
+  font-size: 3rem; /* Tekstin koko */
+  font-weight: bold; /* Korostaa tekstiä */
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+img.logo {
+  height: 80px; /* Logon korkeus */
+  margin-right: 1rem; /* Tilaa logon ja tekstin väliin */
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch; /* Korjattu */
+  background-color: #F0F4F8; 
+}
+
+
+
+
+

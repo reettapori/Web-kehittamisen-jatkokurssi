@@ -1,10 +1,11 @@
-// src/components/Header.jsx
 import React from 'react';
+import logo from '../assets/logo.jpg'; // Varmista polku logo-tiedostoon
 
 const Header = () => {
   return (
-    <header className="bg-blue-500 text-white p-4 fixed top-0 left-0 right-0 z-10">
-      <h1 className="text-xl">Liikuntapäiväkirja</h1>
+    <header style={{ backgroundColor: '#88a0c2' }} className="bg-blue-600 w-full flex items-center justify-start">
+      <img src={logo} alt="Liikuntapäiväkirja Logo" className="logo" />
+      <h1 className="header-text">Liikuntapäiväkirja</h1>
     </header>
   );
 };

@@ -104,6 +104,13 @@ button:focus-visible {
   }
 
 }
+
+@media (max-width: 768px) {
+  .bg-white {
+    margin-top: 1rem; /* Pienemmillä näytöillä siirrä hieman */
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -116,7 +123,160 @@ html, body {
   background-color: #F0F4F8; 
 }
 
+input, textarea, select {
+  color: black; /* Tekstin väri */
+  background-color: white; /* Taustan väri */
+  border: 1px solid #ccc; /* Lisää rajaus */
+  padding: 0.5rem; /* Lisää hieman tilaa sisällölle */
+  border-radius: 4px; /* Pyöristetyt kulmat */
+}
+
+.bg-white {
+  margin-top: 2rem; /* Siirtää hieman ylemmäksi */
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-exercise-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.header-bar {
+  background-color: #28a745; /* Vihreä taustaväri */
+  color: white; /* Valkoinen teksti */
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 8px; /* Pyöristetyt kulmat vasemmalla */
+  border-top-right-radius: 8px; /* Pyöristetyt kulmat oikealla */
+}
+
+.header-bar2 {
+  background-color: #FF9F1C;
+  color: white; /* Valkoinen teksti */
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 8px; /* Pyöristetyt kulmat vasemmalla */
+  border-top-right-radius: 8px; /* Pyöristetyt kulmat oikealla */
+}
+
+.header-bar3 {
+  background-color: #0077B6;
+  color: white; /* Valkoinen teksti */
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 8px; /* Pyöristetyt kulmat vasemmalla */
+  border-top-right-radius: 8px; /* Pyöristetyt kulmat oikealla */
+} 
+
+.header-bar h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.exercise-list-container {
+  background-color: white; /* Valkoinen tausta */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.exercise-list-container ul {
+  color: black; /* Tekstin väri mustaksi */
+  padding: 0;
+}
+
+.exercise-list-container li {
+  color: black;
+  padding: 1rem;
+  background-color: #f9f9f9; /* Vaalea tausta jokaiselle riville */
+  border-radius: 4px;
+  margin-bottom: 1rem; /* Välit rivien välillä */
+}
 
 
+.header-bar {
+  background-color: #28a745; /* Vihreä taustaväri */
+  color: white; /* Valkoinen teksti */
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
 
+.header-bar h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
 
+/* Poista-painike */
+.bg-red-custom {
+  background-color: #FF6B6B; /* Uusi punainen väri */
+}
+
+.bg-red-custom:hover {
+  background-color: #E05656; /* Tummempi hover-efekti */
+}
+
+/* Muokkaa-painike */
+.bg-yellow-custom {
+  background-color: #FFD166; /* Uusi keltainen väri */
+}
+
+.bg-yellow-custom:hover {
+  background-color: #E6B856; /* Tummempi hover-efekti */
+}
+
+.page-layout {
+  display: flex; /* Asetetaan rinnakkain */
+  gap: 2rem; /* Väli konttien välillä */
+  align-items: flex-start; /* Kohdistetaan yläreunaan */
+}
+
+.app-layout {
+  display: flex; /* Asetetaan rinnakkain */
+  gap: 2rem; /* Väli alueiden välillä */
+  align-items: flex-start; /* Kohdistus yläreunaan */
+}
+
+.weekly-stats-container {
+  background-color: white; /* Valkoinen tausta */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.weekly-stats-container p {
+  color: black; /* Teksti mustaksi */
+  margin: 0.5rem 0; /* Väli tekstien välillä */
+  font-size: 1rem; /* Sopiva fonttikoko */
+}
+
+.weekly-stats-container p strong {
+  font-weight: bold; /* Otsikoiden boldaus */
+}
+
+.exercise-management {
+  display: flex; /* Asetellaan rinnakkain */
+  gap: 2rem; /* Väli alueiden välillä */
+  align-items: flex-start; /* Kohdistus yläreunaan */
+}
+
+.exercise-list {
+  flex-grow: 2; /* Suurempi osuus tilasta */
+}
+
+.edit-form {
+  flex-grow: 1; /* Pienempi osuus tilasta */
+}
+
+.flex-grow {
+  flex-grow: 1; /* Jaa tilaa tasaisesti */
+}
+
+.h-96 {
+  height: 24rem; /* Asetetaan yhtenäinen korkeus */
+}

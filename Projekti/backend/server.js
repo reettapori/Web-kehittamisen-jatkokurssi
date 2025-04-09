@@ -169,6 +169,52 @@ app.put('/api/liikuntasuoritukset/:id', async (req, res) => {
   }
 });
 
+//Karttatoiminnot
+app.post('/api/map-markers', async (req, res) => {
+  const { lat, lng, description } = req.body;
+
+  if (!lat || !lng || !description) {
+    return res.status(400).json({ error: 'Koordinaatit ja kuvaus vaaditaan' });
+  }
+
+  try {
+    const result = await pool.query(
+      'INSERT INTO map_markers (latitude, longitude, description) VALUES ($1, $2, $3) RETURNING *',
+      [lat, lng, description]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error('Tietokantavirhe:', err.message);
+    res.status(500).json({ error: 'Tietokantavirhe' });
+  }
+});
+
+app.get('/api/map-markers', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM map_markers');
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Virhe tietokannassa:', err.message);
+    res.status(500).json({ error: 'Tietokantavirhe' });
+  }
+});
+
+app.delete('/api/map-markers/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query('DELETE FROM map_markers WHERE id = $1 RETURNING *', [id]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: 'Merkintää ei löytynyt' });
+    }
+
+    res.status(200).json({ message: 'Merkintä poistettu', id });
+  } catch (err) {
+    console.error('Tietokantavirhe:', err.message);
+    res.status(500).json({ error: 'Tietokantavirhe' });
+  }
+});
 
 // Käynnistä palvelin
 app.listen(port, () => {

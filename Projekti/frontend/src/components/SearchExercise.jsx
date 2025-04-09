@@ -34,15 +34,14 @@ const SearchExercise = ({ setExercises }) => {
   };
 
   return (
-    <div>
-      {/* Vihreä palkki hakupalkille */}
+    <div className="search-exercise-container">
+      {/* Oranssi palkki hakupalkille */}
       <div className="header-bar2">
-        <h2 className="text-white text-2xl font-bold mb-4">Hae liikuntasuorituksia:</h2>
+      <h2 className="search-exercise-title">Hae liikuntasuorituksia:</h2>
       </div>
-
       <form onSubmit={handleSearch} className="flex flex-col space-y-4 p-4 rounded-lg border border-gray-300">
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Päivämäärä</label>
+          <label className="date-type-name block text-sm font-medium text-gray-700">Päivämäärä</label>
           <input
             type="date"
             name="paivamaara"
@@ -53,7 +52,7 @@ const SearchExercise = ({ setExercises }) => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Liikuntalaji</label>
+          <label className="date-type-name block text-sm font-medium text-gray-700">Liikuntalaji</label>
           <input
             type="text"
             name="liikuntalaji"
@@ -64,7 +63,7 @@ const SearchExercise = ({ setExercises }) => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Käyttäjän nimi</label>
+          <label className="date-type-name block text-sm font-medium text-gray-700">Käyttäjän nimi</label>
           <input
             type="text"
             name="nimi"
@@ -76,7 +75,7 @@ const SearchExercise = ({ setExercises }) => {
 
         <button
           type="submit"
-          className="bg-[#FF9F1C] hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+          className="button-text-size bg-[#FF9F1C] hover:bg-blue-600 text-white py-2 px-4 rounded-md"
         >
           Hae
         </button>

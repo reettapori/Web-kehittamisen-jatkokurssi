@@ -54,7 +54,7 @@ const WeeklyStats = () => {
     <div className="weekly-stats-container">
       {/* Viikon tilastot */}
       <div className="header-bar3">
-        <h2>Viikon tilastot</h2>
+        <h2 className="weeklystats-title">Viikon tilastot</h2>
       </div>
       <div className="p-4 space-y-4 text-lg leading-relaxed text-gray-800">
         <p><strong>Viikon pisin liikuntasuoritus:</strong> {stats.longestDuration || 'Ei tietoja'} minuuttia</p>
@@ -65,9 +65,9 @@ const WeeklyStats = () => {
 
       {/* Edistymistoiminto */}
       <div className="progress-section mt-6">
-        <h3 className="text-xl font-bold">Edistymisen seuranta</h3>
+        <h3 className="progress-title">Edistymisen seuranta</h3>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Käyttäjän nimi</label>
+          <label className="user-name">Käyttäjän nimi</label>
           <input
             type="text"
             value={userName}
@@ -77,7 +77,7 @@ const WeeklyStats = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Tavoitetunnit</label>
+          <label className="target-hours">Tavoitetunnit</label>
           <input
             type="number"
             value={goalHours}
@@ -88,7 +88,7 @@ const WeeklyStats = () => {
 
         <button
           onClick={handleFetchProgress}
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
+          className="button-text-size bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
         >
           Näytä edistyminen
         </button>

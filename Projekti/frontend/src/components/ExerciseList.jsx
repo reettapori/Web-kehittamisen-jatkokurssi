@@ -39,10 +39,12 @@ const ExerciseList = () => {
 
   return (
     <div className="text-black p-4 flex space-x-6">
-        
       {/* Lista liikuntasuorituksista */}
       <div className="bg-white shadow-md rounded-2xl p-6 w-2/3">
-        <h2 className="text-2xl font-bold mb-4">Liikuntasuoritukset (viimeiset 7 päivää)</h2>
+        {/* Harmaa palkki */}
+        <div className="header-bar4">
+          <h2 className="add-exercise-title">Liikuntasuoritukset (viimeiset 7 päivää)</h2>
+        </div>
         {exercises.length > 0 ? (
           <ul className="space-y-4">
             {exercises.map((exercise) => (

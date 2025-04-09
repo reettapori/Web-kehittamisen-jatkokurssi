@@ -13,7 +13,9 @@
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "pg": "^8.14.1"
+    "leaflet": "^1.9.4",
+    "pg": "^8.14.1",
+    "react-leaflet": "^5.0.0"
   },
   "description": ""
 }

@@ -35,17 +35,18 @@ const AddExercise = () => {
     <div className="add-exercise-container">
       {/* Vihreä palkki otsikolla */}
       <div className="header-bar">
-        <h2>Lisää liikuntasuoritus</h2>
+        <h2 className="add-exercise-title">Lisää liikuntasuoritus</h2>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4 p-4">
+        <label className="date-type-name block text-sm font-medium text-gray-700">Nimi</label>
         <input
           type="text"
           name="nimi"
-          placeholder="Nimi"
           value={formData.nimi}
           onChange={handleChange}
           className="p-2 rounded"
         />
+        <label className="date-type-name block text-sm font-medium text-gray-700">Päivämäärä</label>
         <input
           type="date"
           name="paivamaara"
@@ -53,46 +54,46 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
-        <input
-          type="number"
-          name="kesto"
-          placeholder="Kesto (tuntia)"
-          value={formData.kesto}
-          onChange={handleChange}
-          className="p-2 rounded"
-        />
+        <label className="date-type-name block text-sm font-medium text-gray-700">Liikuntalaji</label>
         <input
           type="text"
           name="liikuntalaji"
-          placeholder="Liikuntalaji"
           value={formData.liikuntalaji}
           onChange={handleChange}
           className="p-2 rounded"
         />
+        <label className="date-type-name block text-sm font-medium text-gray-700">Kesto (tuntia)</label>
+        <input
+          type="number"
+          name="kesto"
+          value={formData.kesto}
+          onChange={handleChange}
+          className="p-2 rounded"
+        />
+        <label className="date-type-name block text-sm font-medium text-gray-700">Keskinopeus (km/h)</label>
         <input
           type="number"
           name="keskinopeus"
-          placeholder="Keskinopeus (km/h)"
           value={formData.keskinopeus}
           onChange={handleChange}
           className="p-2 rounded"
         />
+        <label className="date-type-name block text-sm font-medium text-gray-700">Matka (km)</label>
         <input
           type="number"
           name="matka"
-          placeholder="Matka (km)"
           value={formData.matka}
           onChange={handleChange}
           className="p-2 rounded"
         />
+        <label className="date-type-name block text-sm font-medium text-gray-700">Lisätiedot</label>
         <textarea
           name="lisatiedot"
-          placeholder="Lisätiedot"
           value={formData.lisatiedot}
           onChange={handleChange}
           className="p-2 rounded"
         />
-        <button type="submit" className="bg-[#00B74A] text-white py-2 px-4 rounded hover:bg-blue-600">
+        <button type="submit" className="button-text-size bg-[#00B74A] text-white py-2 px-4 rounded hover:bg-blue-600">
           Lisää suoritus
         </button>
       </form>

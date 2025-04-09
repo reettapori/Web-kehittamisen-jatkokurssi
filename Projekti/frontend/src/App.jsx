@@ -3,7 +3,8 @@ import Header from './components/Header';
 import AddExercise from './components/AddExercise';
 import ExerciseList from './components/ExerciseList';
 import WeeklyStats from './components/WeeklyStats';
-import SearchExercise from './components/SearchExercise';  // Lisää tämä rivi
+import SearchExercise from './components/SearchExercise';
+import MapComponent from './components/MapComponent'; // Leaflet-karttakomponentti
 
 function App() {
   const [exercises, setExercises] = useState([]);
@@ -17,23 +18,27 @@ function App() {
           <div className="bg-white p-4 w-full md:w-1/3">
             <AddExercise />
           </div>
-          
+
           {/* Viikkotilastot oikealle puolelle */}
           <div className="bg-white p-4 w-full md:w-1/3">
             <WeeklyStats />
           </div>
         </section>
-
-                {/* Haku-komponentti */}
-                <section className="flex w-full justify-between gap-6">
-          <div className="w-1/3 bg-white p-4">
+        <section>
+          {/* Haku-komponentti */}
+          <div className="bg-white p-4 w-full md:w-1/3">
             <SearchExercise setExercises={setExercises} />
           </div>
         </section>
 
         {/* Liikuntasuoritusten lista */}
         <section className="bg-white p-4 w-full md:w-2/3">
-            <ExerciseList exercises={exercises} />
+          <ExerciseList exercises={exercises} />
+        </section>
+
+        {/* Karttakomponentti */}
+        <section className="bg-white p-4 md:w-2/3">
+          <MapComponent /> {/* Leaflet-kartta näkyy tässä */}
         </section>
       </main>
     </div>

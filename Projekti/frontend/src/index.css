@@ -139,20 +139,25 @@ input, textarea, select {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.button-text-size {
+  font-size: 1.5rem;
+}
+
 .add-exercise-container {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 1rem;
 }
 
 .header-bar {
   background-color: #28a745; /* Vihreä taustaväri */
-  color: white; /* Valkoinen teksti */
   padding: 1rem;
-  text-align: center;
   border-top-left-radius: 8px; /* Pyöristetyt kulmat vasemmalla */
   border-top-right-radius: 8px; /* Pyöristetyt kulmat oikealla */
+}
+.add-exercise-title {
+  color: white; /* Valkoinen teksti */
+  font-size: 2rem !important; /* Suurempi fonttikoko */
+  font-weight: bold; /* Korosta tekstiä */
+  text-align: center; /* Keskitä teksti*/
 }
 
 .header-bar2 {
@@ -163,9 +168,54 @@ input, textarea, select {
   border-top-left-radius: 8px; /* Pyöristetyt kulmat vasemmalla */
   border-top-right-radius: 8px; /* Pyöristetyt kulmat oikealla */
 }
+.weeklystats-title {
+  color: white; /* Valkoinen teksti */
+  font-size: 2rem !important; /* Suurempi fonttikoko */
+  font-weight: bold; /* Korosta tekstiä */
+  text-align: center; /* Keskitä teksti*/
+}
+
+.progress-title {
+  font-size: 1.8rem; /* Suurempi fonttikoko */
+  font-weight: bold; /* Korostettu teksti */
+  padding-bottom: 1rem;
+}
+
+.user-name {
+  font-size: 1.2rem; /* Suurempi fonttikoko */
+  font-weight: bold; /* Teksti lihavoituna */
+  color: #000000; /* Tekstin väri */
+}
+
+.target-hours {
+  font-size: 1.2rem; /* Suurempi fonttikoko */
+  font-weight: bold; /* Teksti lihavoituna */
+  color: #000000; /* Tekstin väri */
+}
+
+.date-type-name{
+  font-size: 1.2rem; /* Suurempi fonttikoko */
+  font-weight: bold; /* Teksti lihavoituna */
+  color: #000000; /* Tekstin väri */
+}
 
 .header-bar3 {
   background-color: #0077B6;
+  color: white; /* Valkoinen teksti */
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 8px; /* Pyöristetyt kulmat vasemmalla */
+  border-top-right-radius: 8px; /* Pyöristetyt kulmat oikealla */
+} 
+.search-exercise-title {
+  color: white; /* Valkoinen teksti */
+  font-size: 2rem !important; /* Suurempi fonttikoko */
+  font-weight: bold; /* Korosta tekstiä */
+  text-align: center; /* Keskitä teksti*/
+}
+
+.header-bar4 {
+  background-color: #99a3a8;
   color: white; /* Valkoinen teksti */
   padding: 1rem;
   text-align: center;
@@ -179,9 +229,6 @@ input, textarea, select {
 }
 .exercise-list-container {
   background-color: white; /* Valkoinen tausta */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 1rem;
 }
 
 .exercise-list-container ul {
@@ -195,16 +242,6 @@ input, textarea, select {
   background-color: #f9f9f9; /* Vaalea tausta jokaiselle riville */
   border-radius: 4px;
   margin-bottom: 1rem; /* Välit rivien välillä */
-}
-
-
-.header-bar {
-  background-color: #28a745; /* Vihreä taustaväri */
-  color: white; /* Valkoinen teksti */
-  padding: 1rem;
-  text-align: center;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
 
 .header-bar h2 {
@@ -242,21 +279,20 @@ input, textarea, select {
   align-items: flex-start; /* Kohdistus yläreunaan */
 }
 
-.weekly-stats-container {
-  background-color: white; /* Valkoinen tausta */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-}
-
 .weekly-stats-container p {
   color: black; /* Teksti mustaksi */
   margin: 0.5rem 0; /* Väli tekstien välillä */
-  font-size: 1rem; /* Sopiva fonttikoko */
+  font-size: 1.3rem; /* Sopiva fonttikoko */
 }
 
 .weekly-stats-container p strong {
   font-weight: bold; /* Otsikoiden boldaus */
+}
+
+.search-exercise-container p {
+  color: black; /* Teksti mustaksi */
+  margin: 0.5rem 0; /* Väli tekstien välillä */
+  font-size: 1.5rem; /* Sopiva fonttikoko */
 }
 
 .exercise-management {
@@ -269,14 +305,28 @@ input, textarea, select {
   flex-grow: 2; /* Suurempi osuus tilasta */
 }
 
-.edit-form {
-  flex-grow: 1; /* Pienempi osuus tilasta */
-}
-
 .flex-grow {
   flex-grow: 1; /* Jaa tilaa tasaisesti */
 }
 
 .h-96 {
   height: 24rem; /* Asetetaan yhtenäinen korkeus */
+}
+
+.map-container {
+  width: 100%; /* Kartan leveys prosentteina ikkunasta */
+  height: 500px; /* Kartan korkeus */
+  margin: 0; /* Ei marginaaleja */
+  float: left; /* Sijoita vasempaan reunaan */
+  border: 1px solid #ccc; /* Hienovarainen reunus kartalle */
+}
+
+.marker-list {
+  width: 30%; /* Listan leveys */
+  height: auto; /* Mukautuu sisältöön */
+  background-color: white; /* Valkoinen tausta */
+  border-radius: 8px; /* Pyöristetyt reunat */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hienovarainen varjo */
+  padding: 1rem; /* Sisäinen marginaali */
+  margin-left: 1rem; /* Väli kartan ja listan välillä */
 }

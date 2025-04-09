@@ -4,3 +4,7 @@
 |28.3.2025|3|Vaihe I|Käyttäjäpersoonat|
 |29.3.2025|3|Vaihe I|Käyttötapaukset ja prototyypin aloitus|
 |31.3.2025|8|Vaihe I|Prototyypin viimeistely & projektihallinnan ja testauksen suunnittelu|
+|1.4.2025|2|Vaihe I ja II|Projektityöpajalla käynti,projektin rakenteen ja toiminnallisuuksien suunnittelua|
+|5.4.2025|6|Vaihe II|Projektin rakenteen ja tyylin tekeminen|
+|7.4.2025|8|Vaihe II|Toiminnallisuuksien rakentelua ja sijoittelua|
+|9.4.2025|4|Vaihe II|Toiminnallisuuksien rakentelua ja sijoittelua|

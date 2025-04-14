@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 
+// Hakukomponentti liikuntasuorituksille
 const SearchExercise = ({ setExercises }) => {
+  // Hakukenttien tilat
   const [searchParams, setSearchParams] = useState({
     paivamaara: '',
     liikuntalaji: '',
     nimi: '',
   });
-  const [results, setResults] = useState([]); // Tallennetaan hakutulokset
 
+  // Hakutulokset tallennetaan tähän
+  const [results, setResults] = useState([]);
+
+  // Päivitetään hakukenttien arvoja tilaan
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSearchParams((prev) => ({
@@ -16,17 +21,20 @@ const SearchExercise = ({ setExercises }) => {
     }));
   };
 
+  // Lähetetään hakupyyntö palvelimelle ja käsitellään tulokset
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
+      // Rakennetaan hakukysely URL-parametreilla
       const query = `?paivamaara=${searchParams.paivamaara}&liikuntalaji=${searchParams.liikuntalaji}&nimi=${searchParams.nimi}`;
       const response = await fetch(`http://localhost:5000/api/liikuntasuoritukset${query}`);
       const data = await response.json();
 
+      // Asetetaan tulokset tilaan (tai tyhjennetään jos ei löytynyt mitään)
       if (data.length > 0) {
-        setResults(data); // Näytä suodatetut tulokset
+        setResults(data);
       } else {
-        setResults([]); // Ei tuloksia hakuehdoilla
+        setResults([]);
       }
     } catch (err) {
       console.error('Virhe haettaessa suorituksia:', err);
@@ -34,12 +42,15 @@ const SearchExercise = ({ setExercises }) => {
   };
 
   return (
-    <div className="search-exercise-container">
-      {/* Oranssi palkki hakupalkille */}
+    <div id="search" className="search-exercise-container relative" style={{ scrollMarginTop: '140px' }}>
+      {/* Otsikkopalkki hakulomakkeelle */}
       <div className="header-bar2">
-      <h2 className="search-exercise-title">Hae liikuntasuorituksia:</h2>
+        <h2 className="search-exercise-title">Hae liikuntasuorituksia:</h2>
       </div>
+
+      {/* Hakulomake */}
       <form onSubmit={handleSearch} className="flex flex-col space-y-4 p-4 rounded-lg border border-gray-300">
+        {/* Päivämääräkenttä */}
         <div className="mb-4">
           <label className="date-type-name block text-sm font-medium text-gray-700">Päivämäärä</label>
           <input
@@ -51,6 +62,7 @@ const SearchExercise = ({ setExercises }) => {
           />
         </div>
 
+        {/* Liikuntalaji-kenttä */}
         <div className="mb-4">
           <label className="date-type-name block text-sm font-medium text-gray-700">Liikuntalaji</label>
           <input
@@ -62,6 +74,7 @@ const SearchExercise = ({ setExercises }) => {
           />
         </div>
 
+        {/* Nimi-kenttä */}
         <div className="mb-4">
           <label className="date-type-name block text-sm font-medium text-gray-700">Käyttäjän nimi</label>
           <input
@@ -73,6 +86,7 @@ const SearchExercise = ({ setExercises }) => {
           />
         </div>
 
+        {/* Hakupainike */}
         <button
           type="submit"
           className="button-text-size bg-[#FF9F1C] hover:bg-blue-600 text-white py-2 px-4 rounded-md"
@@ -81,9 +95,10 @@ const SearchExercise = ({ setExercises }) => {
         </button>
       </form>
 
-      {/* Näytä hakutulokset lomakkeen alapuolella */}
+      {/* Hakutulokset näytetään lomakkeen alla */}
       <div className="mt-6">
         <h3 className="text-xl font-bold">Hakutulokset:</h3>
+
         {results.length > 0 ? (
           <ul className="space-y-4">
             {results.map((exercise) => (

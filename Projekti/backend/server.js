@@ -23,17 +23,41 @@ app.use(bodyParser.json());
 app.post('/api/liikuntasuoritukset', async (req, res) => {
   const { nimi, paivamaara, kesto, liikuntalaji, keskinopeus, matka, lisatiedot } = req.body;
 
+  if (!nimi || !paivamaara || !kesto || !liikuntalaji) {
+    return res.status(400).json({ error: 'Pakolliset kentät ovat täyttämättä!' });
+  }
+
   try {
-    const result = await pool.query(
-      'INSERT INTO liikuntasuoritukset (nimi, paivamaara, kesto, liikuntalaji, keskinopeus, matka, lisatiedot) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [nimi, paivamaara, kesto, liikuntalaji, keskinopeus, matka, lisatiedot]
+    const newExercise = {
+      nimi,
+      paivamaara,
+      kesto,
+      liikuntalaji,
+      keskinopeus: keskinopeus || null, // Aseta null, jos arvo on tyhjä
+      matka: matka || null, // Aseta null, jos arvo on tyhjä
+      lisatiedot: lisatiedot || '', // Tyhjä merkkijono lisätiedoille
+    };
+
+    await pool.query(
+      'INSERT INTO liikuntasuoritukset (nimi, paivamaara, kesto, liikuntalaji, keskinopeus, matka, lisatiedot) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+      [
+        newExercise.nimi,
+        newExercise.paivamaara,
+        newExercise.kesto,
+        newExercise.liikuntalaji,
+        newExercise.keskinopeus,
+        newExercise.matka,
+        newExercise.lisatiedot,
+      ]
     );
-    res.status(201).json(result.rows[0]);
+
+    res.status(201).json({ message: 'Liikuntasuoritus lisätty onnistuneesti!' });
   } catch (err) {
-    console.error('Tietokantavirhe:', err.message);
-    res.status(500).json({ error: 'Tietokantavirhe' });
+    console.error('Virhe lisättäessä liikuntasuoritusta:', err);
+    res.status(500).json({ error: 'Sisäinen palvelinvirhe.' });
   }
 });
+
 
 //hakee liikuntasuoritukset sekä haussa että listaan
 app.get('/api/liikuntasuoritukset', async (req, res) => {

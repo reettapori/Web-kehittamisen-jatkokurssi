@@ -38,7 +38,7 @@ const ExerciseList = () => {
   };
 
   return (
-    <div className="text-black p-4 flex space-x-6">
+    <div id="exercise-list" className="text-black p-4 flex space-x-6" style={{ scrollMarginTop: '140px' }}>
       {/* Lista liikuntasuorituksista */}
       <div className="bg-white shadow-md rounded-2xl p-6 w-2/3">
         {/* Harmaa palkki */}

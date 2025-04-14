@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 
+// Komponentti liikuntasuorituksen muokkaamiseen
+// Propsit:
+// - selectedExercise: valittu suoritustieto, jota muokataan
+// - onSave: funktio, joka kutsutaan kun muokkaus tallennetaan
+// - onCancel: funktio, joka kutsutaan kun muokkaus perutaan
 const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
+  // Alustetaan formData valitun suorituksen tiedoilla
   const [formData, setFormData] = useState(selectedExercise || {});
 
+  // Päivitetään lomakkeen kenttiä käyttäjän syötteen perusteella
   const handleChange = (e) => {
     setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+      ...formData, // säilytetään olemassa olevat tiedot
+      [e.target.name]: e.target.value, // päivitetään muuttuva kenttä
     });
   };
 
+  // Lomakkeen lähetysfunktio
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Estetään sivun uudelleenlataus
     try {
+      // PUT-pyyntö backendille, jolla päivitetään tietty suoritus ID:n perusteella
       await fetch(`http://localhost:5000/api/liikuntasuoritukset/${formData.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      onSave(formData); // Päivitä tiedot listassa
+
+      // Kutsutaan onSave-funktiota, jotta tieto päivittyy myös käyttöliittymässä
+      onSave(formData);
     } catch (err) {
       console.error('Virhe muokkaamisessa:', err);
     }
@@ -26,10 +37,14 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
 
   return (
     <div className="edit-exercise-container">
+      {/* Otsikkopalkki */}
       <div className="header-bar">
         <h2>Muokkaa liikuntasuoritusta</h2>
       </div>
+
+      {/* Lomake suorituksen muokkaamiseksi */}
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4 p-4">
+        {/* Lomakekentät – jokainen kenttä vastaa tiettyä suorituksen osaa */}
         <input
           type="text"
           name="nimi"
@@ -38,6 +53,7 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <input
           type="date"
           name="paivamaara"
@@ -45,6 +61,7 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <input
           type="number"
           name="kesto"
@@ -53,6 +70,7 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <input
           type="text"
           name="liikuntalaji"
@@ -61,6 +79,7 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <input
           type="number"
           name="keskinopeus"
@@ -69,6 +88,7 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <input
           type="number"
           name="matka"
@@ -77,6 +97,7 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <textarea
           name="lisatiedot"
           placeholder="Lisätiedot"
@@ -84,8 +105,13 @@ const EditExercise = ({ selectedExercise, onSave, onCancel }) => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
+        {/* Painikkeet: Tallenna ja Peruuta */}
         <div className="button-group">
-          <button type="submit" className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600">
+          <button
+            type="submit"
+            className="bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600"
+          >
             Tallenna
           </button>
           <button

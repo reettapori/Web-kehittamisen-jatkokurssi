@@ -315,7 +315,7 @@ input, textarea, select {
 
 .map-container {
   width: 100%; /* Kartan leveys prosentteina ikkunasta */
-  height: 500px; /* Kartan korkeus */
+  height: 700px; /* Kartan korkeus */
   margin: 0; /* Ei marginaaleja */
   float: left; /* Sijoita vasempaan reunaan */
   border: 1px solid #ccc; /* Hienovarainen reunus kartalle */
@@ -329,4 +329,26 @@ input, textarea, select {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hienovarainen varjo */
   padding: 1rem; /* Sisäinen marginaali */
   margin-left: 1rem; /* Väli kartan ja listan välillä */
+}
+
+/* Tyylit mobiililaitteille */
+@media (max-width: 768px) {
+  .add-exercise-container {
+    padding: 10px;
+  }
+
+  .header-bar {
+    text-align: center;
+  }
+}
+
+/* Tyylit suuremmille näytöille */
+@media (min-width: 769px) {
+  .add-exercise-container {
+    padding: 20px 40px;
+  }
+
+  .header-bar {
+    text-align: left;
+  }
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
+// Komponentti liikuntasuorituksen lisäämiseen
 const AddExercise = () => {
+  // Käytetään Reactin useState-hookia lomakkeen kenttien tilan hallintaan
   const [formData, setFormData] = useState({
     nimi: '',
     paivamaara: '',
@@ -11,34 +13,45 @@ const AddExercise = () => {
     lisatiedot: '',
   });
 
+  // Funktio, joka päivittää lomakkeen kenttien arvoja käyttäjän syötteen perusteella
   const handleChange = (e) => {
     setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+      ...formData, // säilytetään olemassa olevat kentät
+      [e.target.name]: e.target.value, // päivitetään muuttuva kenttä
     });
   };
 
+  // Funktio, joka suoritetaan kun lomake lähetetään
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Estetään oletusarvoinen lomakkeen lähetys
     try {
+      // Lähetetään POST-pyyntö backendin API-päätepisteeseen lomakkeen tiedoilla
       await fetch('http://localhost:5000/api/liikuntasuoritukset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      // (Tässä voisi lisätä esimerkiksi ilmoituksen onnistuneesta lisäyksestä tai tyhjentää lomakkeen.)
     } catch (err) {
-      console.error('Virhe:', err);
+      console.error('Virhe:', err); // Tulostetaan mahdollinen virhe
     }
   };
 
   return (
-    <div className="add-exercise-container">
-      {/* Vihreä palkki otsikolla */}
+    <div
+      id="add-exercise"
+      className="add-exercise-container relative"
+      style={{ scrollMarginTop: '140px' }} // Mahdollistaa scrollauksen oikeaan kohtaan navigoidessa
+    >
+      {/* Vihreä yläpalkki ja otsikko */}
       <div className="header-bar">
         <h2 className="add-exercise-title">Lisää liikuntasuoritus</h2>
       </div>
+
+      {/* Lomake suorituksen tietojen syöttämiseen */}
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4 p-4">
-        <label className="date-type-name block text-sm font-medium text-gray-700">Nimi</label>
+        {/* Jokainen kenttä sisältää labelin ja inputin tai tekstialueen */}
+        <label className="date-type-name block text-sm font-medium text-gray-700">Nimi, pakollinen</label>
         <input
           type="text"
           name="nimi"
@@ -46,7 +59,8 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
-        <label className="date-type-name block text-sm font-medium text-gray-700">Päivämäärä</label>
+
+        <label className="date-type-name block text-sm font-medium text-gray-700">Päivämäärä, pakollinen</label>
         <input
           type="date"
           name="paivamaara"
@@ -54,7 +68,8 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
-        <label className="date-type-name block text-sm font-medium text-gray-700">Liikuntalaji</label>
+
+        <label className="date-type-name block text-sm font-medium text-gray-700">Liikuntalaji, pakollinen</label>
         <input
           type="text"
           name="liikuntalaji"
@@ -62,7 +77,8 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
-        <label className="date-type-name block text-sm font-medium text-gray-700">Kesto (tuntia)</label>
+
+        <label className="date-type-name block text-sm font-medium text-gray-700">Kesto (tuntia), pakollinen</label>
         <input
           type="number"
           name="kesto"
@@ -70,6 +86,7 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <label className="date-type-name block text-sm font-medium text-gray-700">Keskinopeus (km/h)</label>
         <input
           type="number"
@@ -78,6 +95,7 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <label className="date-type-name block text-sm font-medium text-gray-700">Matka (km)</label>
         <input
           type="number"
@@ -86,6 +104,7 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
+
         <label className="date-type-name block text-sm font-medium text-gray-700">Lisätiedot</label>
         <textarea
           name="lisatiedot"
@@ -93,7 +112,12 @@ const AddExercise = () => {
           onChange={handleChange}
           className="p-2 rounded"
         />
-        <button type="submit" className="button-text-size bg-[#00B74A] text-white py-2 px-4 rounded hover:bg-blue-600">
+
+        {/* Lähetyspainike, jonka taustaväri määritetty Tailwindin kautta */}
+        <button
+          type="submit"
+          className="button-text-size bg-[#00B74A] text-white py-2 px-4 rounded hover:bg-blue-600"
+        >
           Lisää suoritus
         </button>
       </form>

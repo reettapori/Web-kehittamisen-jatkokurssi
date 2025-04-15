@@ -8,3 +8,4 @@
 |5.4.2025|6|Vaihe II|Projektin rakenteen ja tyylin tekeminen|
 |7.4.2025|8|Vaihe II|Toiminnallisuuksien rakentelua ja sijoittelua|
 |9.4.2025|7|Vaihe II|Toiminnallisuuksien rakentelua ja sijoittelua|
+|14.4.2025|10|Vaihe II|Tyylin ja toiminnallisuuksien viilausta, vaiheen II raportin kirjoittaminen|

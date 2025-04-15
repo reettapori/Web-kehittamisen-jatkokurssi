@@ -4,7 +4,7 @@ Projektin toisessa vaiheessa määritellään projektin aiheen, liikuntapäiväk
 
 ## 1. Ympäristö
 
-Add something
+Suunnittelu- ja määrittelydokumentin mukaan tavoitteena oli, että liikuntapäiväkirja-sovellus toimisi pilvipalveluna. Tähän ei kuitenkaan projektin tässä vaiheessa ehditty etenemään, vaan sovellusta voi käyttää tällä hetkellä vain paikalliselta koneelta. 
 
 ## 2. Backend eli taustajärjestelmä
 

@@ -11,3 +11,5 @@
 |14.4.2025|10|Vaihe II|Tyylin ja toiminnallisuuksien viilausta, vaiheen II raportin kirjoittaminen|
 |22.4.2025|6|Vaihe IV|Loppuraportin kirjoittaminen|
 |27.4.2025|2|Vaihe IV|Esittelyvideon suunnittelu ja nauhoitus|
+
+Yhteensä projektiin käytetyt tunnit: 57.
